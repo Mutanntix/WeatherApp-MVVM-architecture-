@@ -18,7 +18,6 @@
 		FD39CBA72824345800BA8F48 /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD39CBA62824345800BA8F48 /* NetworkProtocol.swift */; };
 		FD39CBA9282434CA00BA8F48 /* NetworkDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD39CBA8282434CA00BA8F48 /* NetworkDelegate.swift */; };
 		FD39CBAC2824FF1500BA8F48 /* WeatherDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD39CBAB2824FF1500BA8F48 /* WeatherDescriptionView.swift */; };
-		FDCFB4E62825178500D39C26 /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCFB4E52825178500D39C26 /* UIViewController + Extension.swift */; };
 		FDDE06FC28242149009C855C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDE06FB28242149009C855C /* AppDelegate.swift */; };
 		FDDE06FE28242149009C855C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDE06FD28242149009C855C /* SceneDelegate.swift */; };
 		FDDE070028242149009C855C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDE06FF28242149009C855C /* MainViewController.swift */; };
@@ -40,7 +39,6 @@
 		FD39CBA62824345800BA8F48 /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
 		FD39CBA8282434CA00BA8F48 /* NetworkDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDelegate.swift; sourceTree = "<group>"; };
 		FD39CBAB2824FF1500BA8F48 /* WeatherDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDescriptionView.swift; sourceTree = "<group>"; };
-		FDCFB4E52825178500D39C26 /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
 		FDDE06F828242149009C855C /* WeatherAppMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherAppMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDDE06FB28242149009C855C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FDDE06FD28242149009C855C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,7 +110,6 @@
 		FD39CBB02825174700BA8F48 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				FDCFB4E52825178500D39C26 /* UIViewController + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -301,7 +298,6 @@
 				FD39CB9D28242CDC00BA8F48 /* ApiOfferModel.swift in Sources */,
 				FD39CBA128242D9A00BA8F48 /* WeatherDescriptionModel.swift in Sources */,
 				FD39CBA72824345800BA8F48 /* NetworkProtocol.swift in Sources */,
-				FDCFB4E62825178500D39C26 /* UIViewController + Extension.swift in Sources */,
 				FD39CBA9282434CA00BA8F48 /* NetworkDelegate.swift in Sources */,
 				FDDE06FE28242149009C855C /* SceneDelegate.swift in Sources */,
 				FD39CB95282425B300BA8F48 /* MainViewModel.swift in Sources */,

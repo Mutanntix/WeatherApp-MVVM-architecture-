@@ -9,5 +9,5 @@ import Foundation
 
 struct WeatherModel: Codable {
     let main: String
-//    let description: String
+    let description: String
 }

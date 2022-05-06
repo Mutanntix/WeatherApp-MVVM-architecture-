@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 
 class MainViewController: UIViewController {
-    lazy var navBarHeight = self.navigationController?.navigationBar.frame.maxY ?? 0.0
     
     lazy var tempView = WeatherDescriptionView(
         frame: .zero,
@@ -30,11 +29,15 @@ class MainViewController: UIViewController {
     
     var networkDelegate = NetworkDelegate()
     
-    var mainViewModel: MainViewModelProtocol!
+    var mainViewModel: MainViewModelProtocol! {
+        didSet {
+            print("viewmodel did set")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainViewModel = MainViewModel()
+        mainViewModel = MainViewModel(weatherModel: nil)
 
         setupUI()
         setupConstaints()
@@ -46,6 +49,12 @@ class MainViewController: UIViewController {
         
         setupNavigationBar()
         setupSubviews()
+        
+//        mainViewModel.viewModelDidChange = { [unowned self] mainViewModel in
+//            DispatchQueue.main.async {
+//                self.setWeatherViews()
+//            }
+//        }
     }
     
     private func setupSubviews() {
@@ -100,6 +109,13 @@ class MainViewController: UIViewController {
         }
     }
     
+    private func setWeatherViews() {
+        tempView.tempLabel.text = mainViewModel.currentTemp
+        minTempView.tempLabel.text = mainViewModel.minTemp
+        maxTempView.tempLabel.text = mainViewModel.maxTemp
+        feelsLikeView.tempLabel.text = mainViewModel.tempFeelsLike
+    }
+    
 
 }
 
@@ -127,7 +143,12 @@ extension MainViewController: UISearchResultsUpdating  {
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-        
+        mainViewModel
+            .fetchWeather(
+                city: searchController
+                    .searchBar.text) { [unowned self] in
+                        self.setWeatherViews()
+        }
     }
 }
 

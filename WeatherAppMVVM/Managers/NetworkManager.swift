@@ -54,6 +54,7 @@ class NetworkManager {
         urlComponents.queryItems = [
             URLQueryItem(name: "q",
                          value: city),
+            URLQueryItem(name: "units", value: "metric"),
             URLQueryItem(name: "appid",
                          value: "ff95518044843b042231937f088f0308")]
         
