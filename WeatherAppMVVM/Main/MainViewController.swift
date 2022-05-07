@@ -2,10 +2,8 @@
 //  ViewController.swift
 //  WeatherAppMVVM
 //
-//  Created by Мурад Чеерчиев on 05.05.2022.
-//
+//  Created by Мурад Чеерчиев on 05.05.2022
 
-import UIKit
 import SnapKit
 
 class MainViewController: UIViewController {
@@ -27,13 +25,9 @@ class MainViewController: UIViewController {
         "Ощущается скорее как:",
         "")
     
-    var networkDelegate = NetworkDelegate()
+    let weatherAdditionalView = WeatherAdditionalView()
     
-    var mainViewModel: MainViewModelProtocol! {
-        didSet {
-            print("viewmodel did set")
-        }
-    }
+    var mainViewModel: MainViewModelProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,12 +43,6 @@ class MainViewController: UIViewController {
         
         setupNavigationBar()
         setupSubviews()
-        
-//        mainViewModel.viewModelDidChange = { [unowned self] mainViewModel in
-//            DispatchQueue.main.async {
-//                self.setWeatherViews()
-//            }
-//        }
     }
     
     private func setupSubviews() {
@@ -62,13 +50,15 @@ class MainViewController: UIViewController {
         view.addSubview(minTempView)
         view.addSubview(maxTempView)
         view.addSubview(feelsLikeView)
+        view.addSubview(weatherAdditionalView)
     }
 
     private func setupConstaints() {
         tempView.snp.makeConstraints { [unowned self] make in
             make.top.equalTo(
                 view.snp_topMargin).inset(10)
-            make.leading.equalToSuperview().inset(20)
+            make.leading.equalToSuperview()
+                .inset(30)
             make.width
                 .equalTo(view.frame.width * 0.35)
             make.height
@@ -79,7 +69,7 @@ class MainViewController: UIViewController {
             make.top.equalTo(
                 view.snp_topMargin).inset(10)
             make.trailing.equalToSuperview()
-                .inset(20)
+                .inset(30)
             make.width
                 .equalTo(view.frame.width * 0.35)
             make.height
@@ -90,7 +80,8 @@ class MainViewController: UIViewController {
             make.top.equalTo(
                 tempView.snp_bottomMargin)
             .inset(-20)
-            make.leading.equalToSuperview().inset(20)
+            make.leading.equalToSuperview()
+                .inset(30)
             make.width
                 .equalTo(view.frame.width * 0.35)
             make.height
@@ -101,19 +92,29 @@ class MainViewController: UIViewController {
             make.top.equalTo(
                 tempView.snp_bottomMargin)
             .inset(-20)
-            make.trailing.equalToSuperview().inset(20)
+            make.trailing.equalToSuperview()
+                .inset(30)
             make.width
                 .equalTo(view.frame.width * 0.35)
             make.height
                 .equalTo(view.frame.width * 0.25)
         }
+        
+        weatherAdditionalView.snp.makeConstraints { [unowned self] make in
+            make.top.equalTo(
+                feelsLikeView.snp_bottomMargin).offset(20)
+            make.leading
+                .trailing.equalToSuperview().inset(20)
+            make.height.equalTo(view.frame.height * 0.2)
+        }
     }
     
-    private func setWeatherViews() {
+    private func setWeatherViews(city: String?) {
         tempView.tempLabel.text = mainViewModel.currentTemp
         minTempView.tempLabel.text = mainViewModel.minTemp
         maxTempView.tempLabel.text = mainViewModel.maxTemp
         feelsLikeView.tempLabel.text = mainViewModel.tempFeelsLike
+        self.navigationItem.title = city ?? "Weather app"
     }
     
 
@@ -146,8 +147,8 @@ extension MainViewController: UISearchResultsUpdating  {
         mainViewModel
             .fetchWeather(
                 city: searchController
-                    .searchBar.text) { [unowned self] in
-                        self.setWeatherViews()
+                    .searchBar.text) { [unowned self] city in
+                        self.setWeatherViews(city: city)
         }
     }
 }

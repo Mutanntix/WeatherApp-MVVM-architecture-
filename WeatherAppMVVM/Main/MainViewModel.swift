@@ -13,8 +13,7 @@ protocol MainViewModelProtocol: AnyObject {
     var maxTemp: String { get }
     var tempFeelsLike: String { get }
     
-    func fetchWeather(city: String?,
-                      completion: @escaping () -> Void)
+    func fetchWeather(city: String?, completion: @escaping (String?) -> Void)
     
     init?(weatherModel: ApiOfferModel?)
 }
@@ -49,7 +48,7 @@ class MainViewModel: MainViewModelProtocol {
     }
     
     func fetchWeather(city: String?,
-                      completion: @escaping () -> Void) {
+                      completion: @escaping (String?) -> Void) {
         if city != nil && city != "" {
             timer.invalidate()
             timer = Timer.scheduledTimer(withTimeInterval: 1,
@@ -62,7 +61,8 @@ class MainViewModel: MainViewModelProtocol {
                     else { return }
                     self?.weatherModel = model
                     DispatchQueue.main.async {
-                        completion()
+                        print(model)
+                        completion(city)
                     }
                 }
             })

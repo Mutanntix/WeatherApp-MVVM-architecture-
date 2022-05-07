@@ -56,7 +56,8 @@ class NetworkManager {
                          value: city),
             URLQueryItem(name: "units", value: "metric"),
             URLQueryItem(name: "appid",
-                         value: "ff95518044843b042231937f088f0308")]
+                         value: "ff95518044843b042231937f088f0308"),
+            URLQueryItem(name: "lang", value: "ru")]
         
         return urlComponents.url
     }

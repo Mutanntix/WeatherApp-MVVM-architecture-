@@ -9,5 +9,4 @@ import Foundation
 
 struct WindModel: Codable {
     let speed: Float
-    
 }
