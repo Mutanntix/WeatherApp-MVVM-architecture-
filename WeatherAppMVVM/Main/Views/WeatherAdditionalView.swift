@@ -11,7 +11,7 @@ import SnapKit
 class WeatherAdditionalView: UIView {
     let stackView = UIStackView()
     
-    let imageView = UIImageView(image: UIImage(named: "clouds"))
+    let imageView = UIImageView(image: UIImage(named: "sunny"))
     let descriptionLabel = UILabel()
     let humidityLabel = UILabel()
     let pressureLabel = UILabel()
@@ -56,7 +56,7 @@ extension WeatherAdditionalView {
         windLabel.text = "Выберите город"
         pressureLabel.text = "Выберите город"
         
-        descriptionLabel.font = .systemFont(ofSize: 13)
+        descriptionLabel.font = .systemFont(ofSize: 12)
         humidityLabel.font = .systemFont(ofSize: 13)
         windLabel.font = .systemFont(ofSize: 13)
         pressureLabel.font = .systemFont(ofSize: 13)

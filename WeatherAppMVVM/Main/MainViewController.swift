@@ -105,7 +105,7 @@ class MainViewController: UIViewController {
                 feelsLikeView.snp_bottomMargin).offset(20)
             make.leading
                 .trailing.equalToSuperview().inset(20)
-            make.height.equalTo(view.frame.height * 0.2)
+            make.height.equalTo(view.frame.height * 0.15)
         }
     }
     
@@ -114,6 +114,16 @@ class MainViewController: UIViewController {
         minTempView.tempLabel.text = mainViewModel.minTemp
         maxTempView.tempLabel.text = mainViewModel.maxTemp
         feelsLikeView.tempLabel.text = mainViewModel.tempFeelsLike
+        weatherAdditionalView.descriptionLabel
+            .text = mainViewModel.description
+        weatherAdditionalView.pressureLabel
+            .text = mainViewModel.pressure
+        weatherAdditionalView.windLabel
+            .text = mainViewModel.windSpeed
+        weatherAdditionalView.humidityLabel
+            .text = mainViewModel.humidity
+        weatherAdditionalView.imageView
+            .image = UIImage(named: mainViewModel.imageName)
         self.navigationItem.title = city ?? "Weather app"
     }
     
